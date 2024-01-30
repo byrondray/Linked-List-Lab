@@ -1,6 +1,6 @@
 import { ISortable } from "./interface";
 
-export class String implements ISortable {
+export class CharacterGroup implements ISortable {
   length: number;
   data: string;
 

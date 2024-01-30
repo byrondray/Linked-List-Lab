@@ -51,11 +51,17 @@ export class LinkedList implements ISortable {
   }
 
   compare(leftPos: number, rightPos: number): boolean {
-    
+    return this.at(leftPos).data > this.at(rightPos).data;
   }
 
   swap(leftPos: number, rightPos: number): void {
-    // Implement this part yourself
+    if (leftPos === rightPos) return;
+
+    let leftNode = this.at(leftPos);
+    let rightNode = this.at(rightPos);
+    let temp = leftNode.data;
+    leftNode.data = rightNode.data;
+    rightNode.data = temp;
   }
 
   print(): void {
