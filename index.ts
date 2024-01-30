@@ -1,9 +1,12 @@
+import { ISortable } from "./interface";
+import { NumberGroup } from "./Numbers";
+import { CharacterGroup } from "./characterGroup";
 import { LinkedList } from "./LinkedList";
 
-class SortUtil {
-  collection: number[] | string | LinkedList;
+export class SortUtil {
+  collection: ISortable;
 
-  constructor(collection: number[] | string | LinkedList) {
+  constructor(collection: ISortable) {
     this.collection = collection;
   }
 
@@ -14,32 +17,12 @@ class SortUtil {
     while (!isSorted) {
       isSorted = true;
       for (let i = 0; i < lastUnsorted; i++) {
-        // HANDLE LINKED LIST LOGIC HERE
-        if (this.collection instanceof LinkedList) {
-          // HELP! -Sarah
-        }
-
-        // HANDLE LIST OF NUMBERS LOGIC HERE
-        // I GOT IT TO WORK WITH ARRAY OF NUMBERS
-        if (this.collection instanceof Array) {
-          if (this.collection[i] > this.collection[i + 1]) {
-            let tempLeft = this.collection[i];
-            this.collection[i] = this.collection[i + 1];
-            this.collection[i + 1] = tempLeft;
-            isSorted = false;
-          }
-        }
-
-        // HANDLE STRING LOGIC HERE
-        if (typeof this.collection === "string") {
-          // HELP! -Sarah
+        if (this.collection.compare(i, i + 1)) {
+          this.collection.swap(i, i + 1);
+          isSorted = false;
         }
       }
       lastUnsorted--;
     }
   }
 }
-
-const sortUtil = new SortUtil([10, 3, -5, 0]);
-sortUtil.sort();
-console.log(sort.collection);
