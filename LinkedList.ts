@@ -10,6 +10,7 @@ class Node {
 
 export class LinkedList implements ISortable {
   head: Node | null = null;
+  length: number = 0;
 
   // Create Node out of data and attach to end of list
   add(data: number): void {
@@ -22,13 +23,14 @@ export class LinkedList implements ISortable {
     let tail = this.head;
     while (tail.next) {
       tail = tail.next;
+      this.length++;
     }
     tail.next = node;
   }
 
   // Should return number of Nodes in List
-  get length(): number {
-    // implement this part yourself
+  getLength(): number {
+    return this.length;
   }
 
   // Convenience method that returns a Node at a given index
@@ -49,7 +51,7 @@ export class LinkedList implements ISortable {
   }
 
   compare(leftPos: number, rightPos: number): boolean {
-    // Implement this part yourself
+    
   }
 
   swap(leftPos: number, rightPos: number): void {
