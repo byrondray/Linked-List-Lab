@@ -1,0 +1,1 @@
+import { ISortable } from "./interface";
